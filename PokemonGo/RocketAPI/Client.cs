@@ -170,41 +170,41 @@ namespace PokemonGo.RocketAPI
             // Use better balls for high CP pokemon
             if (masterBallsCount > 0 && pokemonCP >= 1000)
             {
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Master Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem MASTER BALLZ YO");
                 return MiscEnums.Item.ITEM_MASTER_BALL;
             }
 
             if (ultraBallsCount > 0 && pokemonCP >= 600)
             {
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Ultra Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem ULTRA BALLZ YO");
                 return MiscEnums.Item.ITEM_ULTRA_BALL;
             }
 
             if (greatBallsCount > 0 && pokemonCP >= 350)
             {
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Great Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem GREAT BALLZ YO");
                 return MiscEnums.Item.ITEM_GREAT_BALL;
             }
 
             // If low CP pokemon, but no more pokeballs; only use better balls if pokemon are of semi-worthy quality
             if (pokeBallsCount > 0)
             {
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Poke Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem POKE BALLZ YO");
                 return MiscEnums.Item.ITEM_POKE_BALL;
             }
             else if ((greatBallsCount < 40 && pokemonCP >= 200) || greatBallsCount >= 40)
                 {
-                    ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Great Ball is being used");
+                    ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem GREAT BALLZ YO");
                 return MiscEnums.Item.ITEM_GREAT_BALL;
             }
             else if (ultraBallsCount > 0 && pokemonCP >= 500)
                 { 
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Ultra Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem ULTRA BALLZ YO");
                 return MiscEnums.Item.ITEM_ULTRA_BALL;
             }
             else if (masterBallsCount > 0 && pokemonCP >= 700)
             {
-                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Master Ball is being used");
+                ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] Using Dem MASTER BALLZ YO");
                 return MiscEnums.Item.ITEM_MASTER_BALL;
             }
 
@@ -420,7 +420,7 @@ namespace PokemonGo.RocketAPI
             foreach (var item in items)
             {
                 var transfer = await RecycleItem((AllEnum.ItemId)item.Item_, item.Count);
-                ColoredConsoleWrite(ConsoleColor.DarkCyan, $"[{DateTime.Now.ToString("HH:mm:ss")}] Recycled {item.Count}x {(AllEnum.ItemId)item.Item_}");
+                ColoredConsoleWrite(ConsoleColor.DarkGreen, $"[{DateTime.Now.ToString("HH:mm:ss")}] Obliterated {item.Count}x {(AllEnum.ItemId)item.Item_}");
                 await Task.Delay(500);
             }
             await Task.Delay(_settings.RecycleItemsInterval * 1000);

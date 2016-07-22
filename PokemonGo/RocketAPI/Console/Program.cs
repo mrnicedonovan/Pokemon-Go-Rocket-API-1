@@ -162,7 +162,7 @@ namespace PokemonGo.RocketAPI.Console
                 ColoredConsoleWrite(ConsoleColor.DarkGray, "Team: " + profile.Profile.Team);
                 ColoredConsoleWrite(ConsoleColor.DarkGray, "Stardust: " + profile.Profile.Currency.ToArray()[1].Amount);
 
-                ColoredConsoleWrite(ConsoleColor.Cyan, "\nFarming Started");
+                ColoredConsoleWrite(ConsoleColor.Cyan, "\nStarting this BITCH UPPP");
                 ColoredConsoleWrite(ConsoleColor.Yellow, "----------------------------");
                 if (ClientSettings.TransferType == "leaveStrongest")
                     await TransferAllButStrongestUnwantedPokemon(client);
@@ -234,10 +234,10 @@ namespace PokemonGo.RocketAPI.Console
                     pokemonName = Convert.ToString(pokemon.PokemonId);
                 if (caughtPokemonResponse.Status == CatchPokemonResponse.Types.CatchStatus.CatchSuccess)
                 {
-                    ColoredConsoleWrite(ConsoleColor.Green, $"[{DateTime.Now.ToString("HH:mm:ss")}] We caught a {pokemonName} with {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} CP");
+                    ColoredConsoleWrite(ConsoleColor.DarkCyan, $"[{DateTime.Now.ToString("HH:mm:ss")}] Captured a {pokemonName} with {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} CP");
                 }
                 else
-                    ColoredConsoleWrite(ConsoleColor.Red, $"[{DateTime.Now.ToString("HH:mm:ss")}] {pokemonName} with {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} CP got away..");
+                    ColoredConsoleWrite(ConsoleColor.Red, $"[{DateTime.Now.ToString("HH:mm:ss")}] Fucking {pokemonName} with {encounterPokemonResponse?.WildPokemon?.PokemonData?.Cp} CP escaped like a lil' bitch");
 
 
                 if (ClientSettings.TransferType == "leaveStrongest")
@@ -266,7 +266,7 @@ namespace PokemonGo.RocketAPI.Console
                 var fortSearch = await client.SearchFort(pokeStop.Id, pokeStop.Latitude, pokeStop.Longitude);
 
                 ColoredConsoleWrite(ConsoleColor.Cyan,
-                    $"[{DateTime.Now.ToString("HH:mm:ss")}] PokeStop XP: {fortSearch.ExperienceAwarded}, Gems: {fortSearch.GemsAwarded}, Eggs: {fortSearch.PokemonDataEgg} Items: {GetFriendlyItemsString(fortSearch.ItemsAwarded)}");
+                    $"[{DateTime.Now.ToString("HH:mm:ss")}] PokeStop lootz: XP: {fortSearch.ExperienceAwarded}, Items: {GetFriendlyItemsString(fortSearch.ItemsAwarded)}");
 
                 await Task.Delay(15000);
                 await ExecuteCatchAllNearbyPokemons(client);
@@ -384,13 +384,13 @@ namespace PokemonGo.RocketAPI.Console
 
                 if (transferPokemonResponse.Status == 1)
                 {
-                    ColoredConsoleWrite(ConsoleColor.Magenta, $"[{DateTime.Now.ToString("HH:mm:ss")}] Transferred {pokemon.PokemonId} with {pokemon.Cp} CP");
+                    ColoredConsoleWrite(ConsoleColor.Red, $"[{DateTime.Now.ToString("HH:mm:ss")}] Destroyed {pokemon.PokemonId} with {pokemon.Cp} CP");
                 }
                 else
                 {
                     var status = transferPokemonResponse.Status;
 
-                    ColoredConsoleWrite(ConsoleColor.Red, $"[{DateTime.Now.ToString("HH:mm:ss")}] Somehow failed to transfer {pokemon.PokemonId} with {pokemon.Cp} CP. " +
+                    ColoredConsoleWrite(ConsoleColor.Red, $"[{DateTime.Now.ToString("HH:mm:ss")}] Somehow failed to destroy {pokemon.PokemonId} with {pokemon.Cp} CP. " +
                                              $"ReleasePokemonOutProto.Status was {status}");
                 }
 
@@ -418,7 +418,7 @@ namespace PokemonGo.RocketAPI.Console
                     var dubpokemon = dupes.ElementAt(i).ElementAt(j).value;
                     var transfer = await client.TransferPokemon(dubpokemon.Id);
                     ColoredConsoleWrite(ConsoleColor.DarkGreen,
-                        $"[{DateTime.Now.ToString("HH:mm:ss")}] Transferred {dubpokemon.PokemonId} with {dubpokemon.Cp} CP (Highest is {dupes.ElementAt(i).Last().value.Cp})");
+                        $"[{DateTime.Now.ToString("HH:mm:ss")}] Destroyed the weaker {dubpokemon.PokemonId} with {dubpokemon.Cp} CP (Highest is {dupes.ElementAt(i).Last().value.Cp})");
                 }
             }
         }
